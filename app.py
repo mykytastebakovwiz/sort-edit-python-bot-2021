@@ -63,18 +63,18 @@ class SortFilesApp:
             people_dirs = list(output_data.glob('peopleinput*/docs'))
             print(f"📁 Found {len(people_dirs)} peopleinput*/docs directories")
 
-            # print("📄 Running process_federal_files")
-            # process_federal_files(company, federal)
+            print("📄 Running process_federal_files")
+            process_federal_files(company, federal)
 
-            # print("📄 Running attach_w2_to_stfcs")
-            # attach_w2_to_stfcs(company, state)
+            print("📄 Running attach_w2_to_stfcs")
+            attach_w2_to_stfcs(company, state)
 
             print("📄 Running combine_state_files")
             combined_info = combine_state_files(state, combined)
             print(f"✅ Created {len(combined_info)} combined PDFs")
 
-            # print("📄 Running create_envelope_docs")
-            # create_envelope_docs(combined_info, people_dirs, envelopes)
+            print("📄 Running create_envelope_docs")
+            create_envelope_docs(combined_info, people_dirs, envelopes)
 
             messagebox.showinfo("Done", "All processing complete!")
         except Exception as e:
