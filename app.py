@@ -13,8 +13,8 @@ from processors.envelope_creator import create_envelope_docs
 class SortFilesApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Sort & Edit Files Software")
-        self.root.geometry("450x300")
+        self.root.title("Sort & Edit Files Software 2021")
+        self.root.geometry("450x250")
         self.work_dir = None
         self.spinner_running = False
 
@@ -54,7 +54,6 @@ class SortFilesApp:
         try:
             print(f"📁 Starting workflow with work directory: {self.work_dir}")
             company = self.work_dir / 'company'
-            w2 = self.work_dir / 'W2'
             output_data = self.work_dir / 'output_data'
             federal = self.work_dir / 'federal'
             state = self.work_dir / 'state'
@@ -64,18 +63,18 @@ class SortFilesApp:
             people_dirs = list(output_data.glob('peopleinput*/docs'))
             print(f"📁 Found {len(people_dirs)} peopleinput*/docs directories")
 
-            print("📄 Running process_federal_files")
-            process_federal_files(company, federal)
+            # print("📄 Running process_federal_files")
+            # process_federal_files(company, federal)
 
-            print("📄 Running attach_w2_to_stfcs")
-            attach_w2_to_stfcs(company, w2, state)
+            # print("📄 Running attach_w2_to_stfcs")
+            # attach_w2_to_stfcs(company, state)
 
             print("📄 Running combine_state_files")
             combined_info = combine_state_files(state, combined)
             print(f"✅ Created {len(combined_info)} combined PDFs")
 
-            print("📄 Running create_envelope_docs")
-            create_envelope_docs(combined_info, people_dirs, envelopes)
+            # print("📄 Running create_envelope_docs")
+            # create_envelope_docs(combined_info, people_dirs, envelopes)
 
             messagebox.showinfo("Done", "All processing complete!")
         except Exception as e:
